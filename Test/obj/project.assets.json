@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "Entidades/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Entidades.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Entidades.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Entidades/1.0.0": {
+      "type": "project",
+      "path": "../Entidades/Entidades.csproj",
+      "msbuildProject": "../Entidades/Entidades.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "Entidades >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\joaco\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\joaco\\Documents\\JOACO\\UTN\\2-2do Cuatrimestre\\1-Programacion y laboratorio\\1ER PARCIAL\\PP_Escaner_CarbonaroJoaquin\\Entidades\\Entidades.csproj": {
+              "projectPath": "C:\\Users\\joaco\\Documents\\JOACO\\UTN\\2-2do Cuatrimestre\\1-Programacion y laboratorio\\1ER PARCIAL\\PP_Escaner_CarbonaroJoaquin\\Entidades\\Entidades.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
