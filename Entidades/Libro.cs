@@ -31,20 +31,44 @@ namespace Entidades
 
         public override string ToString()
         {
+            // Llamamos al ToString de la clase padre y lo dividimos en líneas
+            string[] lineasPadre = base.ToString().Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+            // Creamos un StringBuilder para construir el resultado
             StringBuilder sb = new StringBuilder();
-            // Llamamos al ToString de la clase padre y lo almacenamos en una variable
-            string padreString = base.ToString();
-            // Agregamos las líneas en el orden especificado
-            sb.AppendLine(padreString);
-            // Buscamos la posición donde se encuentra el código de barras y lo insertamos antes
-            int posicionCodigoBarras = padreString.IndexOf("Cód. de barras:");
-            if (posicionCodigoBarras != -1)
+
+            // Añadimos las líneas de la clase padre en el orden especificado, insertando el ISBN antes del código de barras
+            foreach (string linea in lineasPadre)
             {
-                sb.Insert(posicionCodigoBarras, $"ISBN: {ISBN}\n");
+                if (linea.Contains("Cód. de barras:"))
+                {
+                    sb.AppendLine($"ISBN: {ISBN}");
+                }
+                sb.AppendLine(linea);
             }
-            sb.AppendLine($"Número de páginas: {NumPaginas}.");
+
+            // Añadimos el número de páginas al final
+            sb.AppendLine($"Número de páginas: {NumPaginas}");
+
             return sb.ToString();
         }
+
+        //public override string ToString()
+        //{
+        //    StringBuilder sb = new StringBuilder();
+        //    // Llamamos al ToString de la clase padre y lo almacenamos en una variable
+        //    string padreString = base.ToString();
+        //    // Agregamos las líneas en el orden especificado
+        //    sb.AppendLine(padreString);
+        //    // Buscamos la posición donde se encuentra el código de barras y lo insertamos antes
+        //    int posicionCodigoBarras = padreString.IndexOf("Cód. de barras:");
+        //    if (posicionCodigoBarras != -1)
+        //    {
+        //        sb.Insert(posicionCodigoBarras, $"ISBN: {ISBN}\n");
+        //    }
+        //    sb.AppendLine($"Número de páginas: {NumPaginas}.");
+        //    return sb.ToString();
+        //}
 
         /*
         public override string ToString()

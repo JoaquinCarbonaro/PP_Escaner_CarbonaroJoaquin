@@ -16,9 +16,13 @@ namespace Entidades
 
         private static void MostrarDocumentosPorEstado(Escaner e, Paso estado, out int extension, out int cantidad, out string resumen)
         {
+            // Filtra los documentos del escáner que tienen el estado especificado
             var documentos = e.ListaDocumentos.Where(d => d.Estado == estado).ToList();
+            // Calcula la extensión total sumando el número de páginas de los libros y la superficie de los mapas
             extension = documentos.OfType<Libro>().Sum(l => l.NumPaginas) + documentos.OfType<Mapa>().Sum(m => m.Superficie);
+            // Calcula la cantidad de documentos filtrados
             cantidad = documentos.Count;
+            // Construye un resumen de los documentos filtrados
             var sb = new StringBuilder();
             foreach (var doc in documentos)
             {

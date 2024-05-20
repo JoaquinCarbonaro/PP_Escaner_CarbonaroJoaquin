@@ -8,6 +8,7 @@ namespace Entidades
 {
     public abstract class Documento
     {
+        //TIPOS ANIDADOS (ENUM)
         public enum Paso
         {
             Inicio,
@@ -17,13 +18,30 @@ namespace Entidades
             Terminado
         }
 
-        public int Anio { get; }
-        public string Autor { get; }
-        public string Barcode { get; }
-        public Paso Estado { get; private set; }
-        protected string NumNormalizado { get; }
-        public string Titulo { get; }
+        //CAMPOS (ATRIBUTOS)
+        private int anio;
+        private string autor;
+        private string barcode;
+        private Paso estado;
+        private string numNormalizado;
+        private string titulo;
 
+        //PROPIEDADES
+        public int Anio { get { return anio; } }
+        public string Autor { get { return autor; } }
+        public string Barcode { get { return barcode; } }
+
+        //PREGUNTAR: debo poner set para usar en metodo
+        public Paso Estado
+        {
+            get { return estado; }
+            private set { estado = value; }
+        }
+
+        protected string NumNormalizado { get { return numNormalizado; } }
+        public string Titulo { get { return titulo; } }
+
+        //METODOS
         public bool AvanzarEstado()
         {
             if (Estado == Paso.Terminado)
@@ -35,12 +53,12 @@ namespace Entidades
 
         public Documento(string titulo, string autor, int anio, string numNormalizado, string barcode)
         {
-            Titulo = titulo;
-            Autor = autor;
-            Anio = anio;
-            NumNormalizado = numNormalizado;
-            Barcode = barcode;
-            Estado = Paso.Inicio;
+            this.titulo = titulo;
+            this.autor = autor;
+            this.anio = anio;
+            this.numNormalizado = numNormalizado;
+            this.barcode = barcode;
+            this.estado = Paso.Inicio;
         }
 
         public override string ToString()
@@ -53,7 +71,7 @@ namespace Entidades
             return sb.ToString();
         }
 
-        
+
 
     }
 
