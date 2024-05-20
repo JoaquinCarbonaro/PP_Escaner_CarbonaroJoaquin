@@ -8,16 +8,6 @@ namespace Entidades
 {
     public abstract class Documento
     {
-        //TIPOS ANIDADOS (ENUM)
-        public enum Paso
-        {
-            Inicio,
-            Distribuido,
-            EnEscaner,
-            EnRevision,
-            Terminado
-        }
-
         //CAMPOS (ATRIBUTOS)
         private int anio;
         private string autor;
@@ -30,14 +20,7 @@ namespace Entidades
         public int Anio { get { return anio; } }
         public string Autor { get { return autor; } }
         public string Barcode { get { return barcode; } }
-
-        //PREGUNTAR: debo poner set para usar en metodo
-        public Paso Estado
-        {
-            get { return estado; }
-            private set { estado = value; }
-        }
-
+        public Paso Estado {get { return estado; }}
         protected string NumNormalizado { get { return numNormalizado; } }
         public string Titulo { get { return titulo; } }
 
@@ -47,9 +30,23 @@ namespace Entidades
             if (Estado == Paso.Terminado)
                 return false;
 
-            Estado++;
+            this.estado++;
             return true;
         }
+
+        //public bool AvanzarEstado()
+        //{
+        //    bool retorno = true;
+        //    if (Estado == Paso.Terminado)
+        //    {
+        //        retorno = false;
+        //    }
+        //    else
+        //    {
+        //        estado++;
+        //    }
+        //    return retorno;
+        //}
 
         public Documento(string titulo, string autor, int anio, string numNormalizado, string barcode)
         {
@@ -71,6 +68,15 @@ namespace Entidades
             return sb.ToString();
         }
 
+        //TIPOS ANIDADOS (ENUM)
+        public enum Paso
+        {
+            Inicio,
+            Distribuido,
+            EnEscaner,
+            EnRevision,
+            Terminado
+        }
 
 
     }

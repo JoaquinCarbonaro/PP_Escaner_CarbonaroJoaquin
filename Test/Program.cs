@@ -1,5 +1,6 @@
 ﻿using System;
 using Entidades;
+using static Entidades.Documento;
 using static Entidades.Escaner;
 
 class Program
@@ -54,8 +55,8 @@ class Program
         Console.WriteLine(libro2.ToString());
 
         // Crear instancias de Escaner
-        Escaner escanerLibros = new Escaner("HP", Escaner.TipoDoc.Libro);
-        Escaner escanerMapas = new Escaner("Canon", Escaner.TipoDoc.Mapa);
+        Escaner escanerLibros = new Escaner("HP", Escaner.TipoDoc.libro);
+        Escaner escanerMapas = new Escaner("Canon", Escaner.TipoDoc.mapa);
 
         // Crea instancias de Mapa
         Mapa mapa1 = new Mapa("Mapa del Mundo", "John Doe", 2022, "789-4561230789", "003", 20, 30);

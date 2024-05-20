@@ -9,33 +9,33 @@ namespace Entidades
 {
     public class Escaner
     {
-        public enum Departamento
-        {
-            Nulo,
-            Mapoteca,
-            ProcesosTecnicos
-        }
+        //CAMPOS (ATRIBUTOS)
+        private List<Documento> listaDocumentos;
+        private Departamento locacion;
+        private string marca;
+        private TipoDoc tipo;
 
-        public enum TipoDoc
-        {
-            Libro,
-            Mapa
-        }
+        //PROPIEDADES
+        public List<Documento> ListaDocumentos { get { return listaDocumentos; } }
+        public Departamento Locacion { get { return locacion; } }
+        public string Marca { get { return marca; } }
+        public TipoDoc Tipo { get { return tipo; } }
 
-        public List<Documento> ListaDocumentos { get; }
-        public Departamento Locacion { get; }
-        public string Marca { get; }
-        public TipoDoc Tipo { get; }
+        //METODOS
 
+        //CONSTRUCTOR
         public Escaner(string marca, TipoDoc tipo)
         {
-            Marca = marca;
-            Tipo = tipo;
-            ListaDocumentos = new List<Documento>();
-            Locacion = tipo == TipoDoc.Libro ? Departamento.ProcesosTecnicos : Departamento.Mapoteca;
+            this.marca = marca;
+            this.tipo = tipo;
+            listaDocumentos = new List<Documento>();
+            locacion = tipo == TipoDoc.libro ? Departamento.procesosTecnicos : Departamento.mapoteca;
         }
 
-        public static bool operator !=(Escaner e, Documento d) => !(e == d);
+        public static bool operator !=(Escaner e, Documento d)
+        {
+        return !(e == d);
+        }
 
         public static bool operator +(Escaner e, Documento d)
         {
@@ -47,41 +47,27 @@ namespace Entidades
             return true;
         }
 
-        //public bool AvanzarEstado()
-        //{
-        //    bool retorno = true;
-        //    if (Estado == Paso.Terminado)
-        //    {
-        //        retorno = false;
-        //    }
-        //    else
-        //    {
-        //        estado++;
-        //    }
-        //    return retorno;
-        //}
+        public static bool operator ==(Escaner e, Documento d)
+        {
+            return e.listaDocumentos.Contains(d);
+        }
 
         //public static bool operator ==(Escaner e, Documento d)
         //{
-        //    return e.ListaDocumentos.Contains(d);
+        //    bool isEqual = false;
+
+        //    // Verifica si el documento es del tipo adecuado para el escáner
+        //    if ((e.Tipo == TipoDoc.Libro && d is Libro) || (e.Tipo == TipoDoc.Mapa && d is Mapa))
+        //    {
+        //        isEqual = e.ListaDocumentos.Contains(d);
+        //    }
+
+        //    return isEqual;
         //}
-
-        public static bool operator ==(Escaner e, Documento d)
-        {
-            bool isEqual = false;
-
-            // Verifica si el documento es del tipo adecuado para el escáner
-            if ((e.Tipo == TipoDoc.Libro && d is Libro) || (e.Tipo == TipoDoc.Mapa && d is Mapa))
-            {
-                isEqual = e.ListaDocumentos.Contains(d);
-            }
-
-            return isEqual;
-        }
 
         public bool CambiarEstadoDocumento(Documento d)
         {
-            if (ListaDocumentos.Contains(d))
+            if (listaDocumentos.Contains(d))
             {
                 return d.AvanzarEstado();
             }
@@ -103,6 +89,21 @@ namespace Entidades
             return cambioExitoso; // devuelve el resultado final
         }
         */
+
+        //TIPOS ANIDADOS (ENUM)
+        public enum Departamento
+        {
+            nulo,
+            mapoteca,
+            procesosTecnicos
+        }
+
+        public enum TipoDoc
+        {
+            libro,
+            mapa
+        }
+
 
     }
         
