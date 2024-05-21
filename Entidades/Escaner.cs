@@ -26,7 +26,7 @@ namespace Entidades
         //CONSTRUCTOR
 
         /// <summary>
-        /// Inicializa una nueva instancia de la clase Escaner.
+        /// Crea una instancia de la clase Escaner con los datos proporcionados.
         /// </summary>
         /// <param name="marca">Marca del escáner.</param>
         /// <param name="tipo">Tipo de documentos que escanea.</param>
@@ -53,7 +53,7 @@ namespace Entidades
         //SOBRECARGAS
 
         /// <summary>
-        /// Sobrecarga del operador != para comparar un escáner y un documento.
+        /// Sobrecarga del operador != compara un escáner y un documento.
         /// </summary>
         /// <param name="e">El escáner a comparar.</param>
         /// <param name="d">El documento a comparar.</param>
@@ -64,90 +64,103 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Sobrecarga del operador + para agregar un documento al escáner.
+        /// Sobrecarga del operador + para agregar un documento a la lista del escáner.
         /// </summary>
         /// <param name="e">El escáner al que se agregará el documento.</param>
         /// <param name="d">El documento a agregar.</param>
         /// <returns>True si el documento se agregó exitosamente, false en caso contrario.</returns>
         public static bool operator +(Escaner e, Documento d)
         {
-            bool retorno = false;
+            bool respuesta = false;
 
+            // Verificar si el tipo del escáner y el tipo del documento son compatibles
             if ((e.tipo == TipoDoc.libro && d is Libro) || (e.tipo == TipoDoc.mapa && d is Mapa))
             {
+                // Verificar que el documento no esté ya en el escáner y que esté en el estado inicial
                 if (e != d && d.Estado == Documento.Paso.Inicio)
                 {
                     d.AvanzarEstado();
                     e.ListaDocumentos.Add(d);
-                    retorno = true;
+                    respuesta = true;
                 }
             }
 
-            return retorno;
+            return respuesta;
         }
 
         /// <summary>
-        /// Sobrecarga del operador == para comparar un escáner y un documento.
+        /// Sobrecarga del operador == compara un escáner y un documento.
         /// </summary>
         /// <param name="e">El escáner a comparar.</param>
         /// <param name="d">El documento a comparar.</param>
         /// <returns>True si el documento está en la lista del escáner, false en caso contrario.</returns>
         public static bool operator ==(Escaner e, Documento d)
         {
-            bool retorno = false;
+            bool respuesta = false;
 
+            // Verificar si el tipo del escáner y el tipo del documento son compatibles
             if ((e.tipo == TipoDoc.libro && d is Libro) || (e.tipo == TipoDoc.mapa && d is Mapa))
             {
-                foreach (Documento doc in e.listaDocumentos) //recorro objetos de la lista
+                // Recorrer la lista (de objetos) de documentos del escáner
+                foreach (Documento doc in e.listaDocumentos) 
                 {
-                    if(d is Libro && doc is Libro && ((Libro)d == (Libro)doc)) // documento (pasado) es de tipo libro y libro (pasado) es igual libro (exitente)
+                    // Si el documento(parametro) y el documento(lista) son libros y (casteando) los libros entre si coinciden (segun sobrecarga ==)
+                    if (d is Libro && doc is Libro && ((Libro)d == (Libro)doc)) 
                     {
-                        retorno = true;
+                        respuesta = true;
                     }
+                    // Si el documento es un mapa y coincide con un mapa en la lista
                     else if (d is Mapa && doc is Mapa && ((Mapa)d == (Mapa)doc))
                     {
-                        retorno = true;
+                        respuesta = true;
                     }
                 }
             }
-            return retorno;
+            return respuesta;
         }
 
 
         //METODOS
 
         /// <summary>
-        /// Cambia el estado de un documento si se encuentra en la lista de documentos.
+        /// Cambia el estado de un documento dentro de la lista de documentos.
         /// </summary>
         /// <param name="d">Documento cuyo estado se desea cambiar.</param>
         /// <returns>True si el estado se pudo cambiar, false si no se pudo cambiar o si el documento no está en la lista.</returns>
         public bool CambiarEstadoDocumento(Documento d)
         {
-            bool retorno = false;
+            bool respuesta = false;
 
-            if ((this.tipo == TipoDoc.libro && d is Libro) || (this.tipo == TipoDoc.mapa && d is Mapa)) // comparo escaner con documento pasado
+            // Verificar si el tipo del escáner(actual) y el tipo del documento(parametro) son compatibles
+            if ((this.tipo == TipoDoc.libro && d is Libro) || (this.tipo == TipoDoc.mapa && d is Mapa))
             {
-                foreach (Documento doc in this.listaDocumentos) //recorro lista de documento (dentro del escaner)
+                // Recorrer la lista de documentos del escáner(actual)
+                foreach (Documento doc in this.listaDocumentos)
                 {
-                    if (this.locacion == Departamento.procesosTecnicos) //libro
+                    // Si la ubicación del escáner es "procesosTecnicos", se trata de un libro
+                    if (this.locacion == Departamento.procesosTecnicos)
                     {
+                        // (casteando) Compara (segun sobrecarga ==) el documento (actual) con el documento (parámetro)
                         if ((Libro)d == (Libro)doc) //parseo
                         {
-                            retorno = doc.AvanzarEstado(); //cambio doc dentro del escaner
+                            // Cambiar el estado del documento (dentro del escáner)
+                            respuesta = doc.AvanzarEstado();
                             break;
                         }
                     }
-                    else if (this.locacion == Departamento.mapoteca) //mapa
+                    // Si la ubicación del escáner es "mapoteca", se trata de un mapa
+                    else if (this.locacion == Departamento.mapoteca) 
                     {
-                        if ((Mapa)d == (Mapa)doc) //parseo
+                        // Comparar el documento actual con el documento pasado como parámetro
+                        if ((Mapa)d == (Mapa)doc)
                         {
-                            retorno = doc.AvanzarEstado(); //cambio doc dentro del escaner
+                            respuesta = doc.AvanzarEstado();
                             break;
                         }
                     }
                 }
             }
-            return retorno;
+            return respuesta;
         }
 
 

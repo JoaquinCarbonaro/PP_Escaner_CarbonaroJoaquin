@@ -20,7 +20,7 @@ namespace Entidades
         //CONSTRUCTOR
 
         /// <summary>
-        /// Crea una nueva instancia de la clase Libro con los datos proporcionados.
+        /// Crea una instancia de la clase Libro con los datos proporcionados.
         /// </summary>
         /// <param name="titulo">El título del libro.</param>
         /// <param name="autor">El autor del libro.</param>
@@ -38,7 +38,7 @@ namespace Entidades
         //SOBRECARGAS
 
         /// <summary>
-        /// Sobrecarga del operador == para compara dos libros y determinar si son iguales.
+        /// Sobrecarga del operador == compara dos libros y determinar si son iguales.
         /// </summary>
         /// <param name="libro1">El primer libro a comparar.</param>
         /// <param name="libro2">El segundo libro a comparar.</param>
@@ -67,33 +67,27 @@ namespace Entidades
         /// <summary>
         /// Retorna una cadena con los datos del libro.
         /// </summary>
-        /// <returns>Cadena con los datos del libro o vacio si ocurrió un error.</returns>
+        /// <returns>Cadena con los datos del libro.</returns>
         public override string ToString()
         {
-            /*
-            "string[] lineasPadre": Esta declaración crea un arreglo de cadenas llamado lineasPadre y asigna las subcadenas resultantes de la división anterior a este arreglo.
-            "Split()" sobre la cadena padre. Este método divide la cadena en un arreglo de subcadenas, utilizando el separador especificado 
-            "Environment.NewLine", representa el separador de línea de acuerdo con el sistema operativo en uso ("\r\n" en Windows)
-            "StringSplitOptions.RemoveEmptyEntries": Este parámetro indica que se deben omitir las cadenas vacías resultantes de la división
-                */
+            // Divide la cadena resultante de la llamada al método ToString() de la clase base (padre) en un arreglo de subcadenas.
+            // La división se realiza utilizando el separador de línea del sistema operativo y eliminando las entradas vacías.
             string[] lineasPadre = base.ToString().Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
-            // Creamos un StringBuilder para construir el resultado
             StringBuilder sb = new StringBuilder();
 
-            // Añadimos las líneas de la clase padre en el orden especificado, insertando el ISBN antes del código de barras
+            // Recorre cada línea obtenida de la división de la cadena de la clase base.
             foreach (string linea in lineasPadre)
             {
-                // Si la línea contiene "Cód. de barras:", insertamos el ISBN antes de esta línea
+                // Si la línea contiene "Cód. de barras:", se inserta el ISBN antes de esta línea.
                 if (linea.Contains("Cód. de barras:"))
                 {
                     sb.AppendLine($"ISBN: {ISBN}");
                 }
-                // Añadimos la línea de la clase padre
+                // Añade la línea de la clase base al StringBuilder.
                 sb.AppendLine(linea);
             }
 
-            // Añadimos el número de páginas al final
             sb.AppendLine($"Número de páginas: {NumPaginas}.");
 
             return sb.ToString();

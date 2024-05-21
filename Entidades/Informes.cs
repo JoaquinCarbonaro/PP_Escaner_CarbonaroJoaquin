@@ -35,29 +35,26 @@ namespace Entidades
         /// <param name="resumen">Resumen de los documentos en el estado especificado.</param>
         private static void MostrarDocumentosPorEstado(Escaner e, Paso estado, out int extension, out int cantidad, out string resumen)
         {
-            // Filtra los documentos del escáner que tienen el estado especificado
-            /*
-            "d" es cada documento en ListaDocumentos.
-            "d.Estado" accede a la propiedad Estado del documento.
-            "estado" es el parámetro de entrada a la función, que representa el estado especificado en el que deben encontrarse los documentos.
-            "ToList" convierte el resultado del filtrado (que es una secuencia de documentos) en una lista de documentos (List<Documento>).
-             */
+            // Filtra los documentos del escáner("e"), recorriendo c/documento ("d") que tienen el estado especificado("estado")
+            // convierte el resultado en una lista de documentos
             var documentos = e.ListaDocumentos.Where(d => d.Estado == estado).ToList();
 
-            // Calcula la cantidad de documentos filtrados
-            /*Se cuenta el número total de documentos filtrados y se asigna a cantidad.*/
+            // Calcula la cantidad de documentos (en el estado especifico)
             cantidad = documentos.Count;
 
             // Inicializa la extensión en 0
             extension = 0;
 
-            // Construye un resumen de los documentos filtrados
-            var sb = new StringBuilder(); //Utiliza StringBuilder para construir el resumen de los documentos filtrados.
-            foreach (var doc in documentos) //Itera sobre cada documento filtrado.
-            {
-                sb.AppendLine(doc.ToString()); //Agrega la representación en cadena del documento al resumen.
+            // construye StringBuilder para el resumen
+            var sb = new StringBuilder();
 
-                // Si el documento es un libro, suma el número de páginas
+            //Itera sobre cada documento filtrado.
+            foreach (var doc in documentos)
+            {
+                // Agrega la representación textual del documento al resumen
+                sb.AppendLine(doc.ToString());
+
+                // Si el documento es un libro (compara creando instancia del objeto libro), suma el número de páginas
                 if (doc is Libro libro)
                 {
                     extension += libro.NumPaginas;
@@ -68,7 +65,7 @@ namespace Entidades
                     extension += mapa.Superficie;
                 }
             }
-            resumen = sb.ToString(); //Convierte el StringBuilder en una cadena y asigna a resumen.
+            resumen = sb.ToString();
         }
 
         /// <summary>

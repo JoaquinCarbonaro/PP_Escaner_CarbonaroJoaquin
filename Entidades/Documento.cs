@@ -29,7 +29,7 @@ namespace Entidades
         //CONSTRUCTOR
 
         /// <summary>
-        /// Crea una nueva instancia de la clase Documento con los datos proporcionados.
+        /// Crea una instancia de la clase Documento con los datos proporcionados.
         /// </summary>
         /// <param name="titulo">El título del documento.</param>
         /// <param name="autor">El autor del documento.</param>
@@ -52,22 +52,22 @@ namespace Entidades
         /// <summary>
         /// Avanza el estado del documento al siguiente paso.
         /// </summary>
-        /// <returns>True si el estado se pudo avanzar, false si ya estaba en el estado final o si ocurrió un error.</returns>
+        /// <returns>True si el estado se pudo avanzar, false si ya estaba en el estado final.</returns>
         public bool AvanzarEstado()
         {
-            if (Estado == Paso.Terminado)
+            if (this.estado == Paso.Terminado)
             {
                 return false;
             }
 
-            estado++;
+            this.estado++;
             return true;
         }
 
         /// <summary>
         /// Retorna una cadena con los datos del documento.
         /// </summary>
-        /// <returns>Cadena con los datos del documento o vacio si ocurrió un error.</returns>
+        /// <returns>Cadena con los datos del documento.</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

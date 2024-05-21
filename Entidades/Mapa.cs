@@ -21,7 +21,7 @@ namespace Entidades
         //CONSTRUCTOR
 
         /// <summary>
-        /// Crea una nueva instancia de la clase Mapa con los datos proporcionados.
+        /// Crea una instancia de la clase Mapa con los datos proporcionados.
         /// </summary>
         /// <param name="titulo">El título del mapa.</param>
         /// <param name="autor">El autor del mapa.</param>
@@ -42,7 +42,7 @@ namespace Entidades
         //SOBRECARGAS
 
         /// <summary>
-        /// Sobrecarga del operador == para comprar dos mapas y determinar si son iguales.
+        /// Sobrecarga del operador == compara dos mapas y determinar si son iguales.
         /// </summary>
         /// <param name="mapa1">El primer mapa a comparar.</param>
         /// <param name="mapa2">El segundo mapa a comparar.</param>
@@ -57,7 +57,7 @@ namespace Entidades
 
 
         /// <summary>
-        /// Sobrecarga del operador != para compara dos mapas y determinar si son diferentes.
+        /// Sobrecarga del operador != compara dos mapas y determinar si son diferentes.
         /// </summary>
         /// <param name="mapa1">El primer mapa a comparar.</param>
         /// <param name="mapa2">El segundo mapa a comparar.</param>
@@ -74,7 +74,7 @@ namespace Entidades
         /// <summary>
         /// Retorna una cadena con los datos del mapa.
         /// </summary>
-        /// <returns>Cadena con los datos del mapa o vacio si ocurrió un error.</returns>
+        /// <returns>Cadena con los datos del mapa.</returns>
         public override string ToString()
         {
             var sb = new StringBuilder(base.ToString());
