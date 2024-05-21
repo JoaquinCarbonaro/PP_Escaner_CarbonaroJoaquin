@@ -1,128 +1,166 @@
 ﻿using System;
 using Entidades;
-using static Entidades.Documento;
-using static Entidades.Escaner;
 
 class Program
 {
     static void Main()
     {
-        /*
-        Escaner escanerLibros = new Escaner("MarcaX", TipoDoc.Libro);
-        Escaner escanerMapas = new Escaner("MarcaY", TipoDoc.Mapa);
+        int extension;
+        int cantidad;
+        string resumen;
 
-        Libro libro1 = new Libro("C# Programming", "John Doe", 2023, "123456789", "987654321", 350);
-        Libro libro2 = new Libro("Learn .NET", "Jane Smith", 2022, "234567890", "876543210", 500);
+        Escaner eLibros = new Escaner("Exo", Escaner.TipoDoc.libro);
+        Escaner eMapas = new Escaner("Samsung", Escaner.TipoDoc.mapa);
 
-        Mapa mapa1 = new Mapa("World Map", "Cartographer", 2021, "1", "567890123", 100, 200);
-        Mapa mapa2 = new Mapa("City Map", "Cartographer", 2020, "1", "678901234", 150, 250);
+        //OBJETOS MAPAS
+        Mapa m1 = new Mapa("Bs. As.", "pepito robredo", 2010, "", "2384-2834", 42, 10);
+        Mapa m2 = new Mapa("Cordoba", "jose pepe", 2000, "", "3245-5334", 50, 40);
+        Mapa m3 = new Mapa("Santa Fe", "Gonzales Arugue", 1995, "", "8092-5689", 50, 85);
+        Mapa m4 = new Mapa("CABA", "Martin Rodriguez", 2018, "", "2382-2852", 89, 100);
+        Mapa m5 = new Mapa("CABA", "Martin Rodriguez", 2018, "", "8982-9999", 89, 100);//m5 repetido mapas repetidos m4           
+        Mapa m6 = new Mapa("santa f", "Arugue", 1995, "", "8092-5689", 50, 50);//m6 repetido mapas repetidos m3
+        Mapa m7 = new Mapa("Argentina", "urregui", 2020, "", "8293-4328", 100, 200);
 
-        Console.WriteLine("Libros distribuidos:");
-        Informes.MostrarDistribuidos(escanerLibros, out int extLibros, out int cantLibros, out string resumenLibros);
-        Console.WriteLine($"Cantidad: {cantLibros}, Extensión: {extLibros}\nResumen:\n{resumenLibros}");
+        //OBJETOS LIBROS
+        Libro l1 = new Libro("Clasicos", "John Wesley", 2021, "212-a", "9781087703237", 425);
+        Libro l2 = new Libro("Padre Rico, Padre Pobre", "Robert Kiyosaki", 2022, "234-2", "9789877253146", 411);
+        Libro l3 = new Libro("El Talento Nunca es Suficiente", "John Maxwell", 2007, "23-23", "9780881130720", 321);
+        Libro l4 = new Libro("La odisea", "Homero", 2007, "234-533", "9789978809525", 360);
+        Libro l5 = new Libro("Don Quijote de la Mancha", "Manuel Cervantes", 2012, "6534-35", "9789978808405", 270);
+        Libro l6 = new Libro("el artexsano", "ruben gonzales", 1994, "3345-234", "78998754123", 400);
+        Libro l7 = new Libro("el artesano", "ruben gonzales", 1994, "3345-234", "78998754123", 400);// l7 repetido libros repetidos
+        Libro l8 = new Libro("La iliada", "Homero", 2016, "234-46367", "978997883245", 500);
+        Libro l9 = new Libro("La iliada", "Homero", 2007, "234-533", "9789978809525", 360);//l9 repetido libros repetidos
 
-        Console.WriteLine("Mapas distribuidos:");
-        Informes.MostrarDistribuidos(escanerMapas, out int extMapas, out int cantMapas, out string resumenMapas);
-        Console.WriteLine($"Cantidad: {cantMapas}, Extensión: {extMapas}\nResumen:\n{resumenMapas}");
+        //COLOCAMOS DIRECTAMENTE EL LIBRO EN DISTRIBUCION 
+        Libro l10 = new Libro("Dejados Atras", "Tim LaHaye", 1997, "8923-2859", "9780789915504", 341);
+        l10.AvanzarEstado();//estado distribuido
+        Libro l11 = new Libro("Penetrando La Oscuridad", "Frank E. Peretti", 1989, "3784-2348", "9780829752298", 528);
+        l11.AvanzarEstado();
+        l11.AvanzarEstado();//estado revision
 
-        Console.WriteLine(mapa1 == mapa1);
-        Console.WriteLine(mapa1 == mapa2);
-        Console.WriteLine(mapa1 != mapa1);
-        Console.WriteLine(mapa1 != mapa2);
+        Console.WriteLine(eMapas + l1); //VERIFICACION. !!!NO SE PUEDE CARGAR UN MAPA EN EL SCANER DE LIBROS Y VICEVERSA
+        Console.WriteLine(eLibros + m1); //VERIFICACION. !!!NO SE PUEDE CARGAR UN MAPA EN EL SCANER DE LIBROS Y VICEVERSA
 
-        Console.WriteLine(libro1 == libro1);
-        Console.WriteLine(libro1 == libro2);
-        Console.WriteLine(libro1 != libro1);
-        Console.WriteLine(libro1 != libro2);
+        Console.WriteLine();
 
-        Console.WriteLine(escanerLibros == libro1);
-        Console.WriteLine(escanerLibros != mapa1);
-        Console.WriteLine(escanerMapas == mapa1);
-        Console.WriteLine(escanerMapas != libro1);
-        Console.WriteLine(escanerLibros + libro1);
-        Console.WriteLine(escanerLibros + mapa1);
-        Console.WriteLine(escanerMapas + mapa1);
-        Console.WriteLine(escanerMapas + libro1);
-        */
+        Console.WriteLine("CARGA EN ESCANER EXO LIBROS");
+        Console.WriteLine("Carga de Libros en el scaner de libros");
+        Console.WriteLine(eLibros + l8);
+        Console.WriteLine(eLibros + l9);// no debe cargar. return false
+        Console.WriteLine(eLibros + l6);
+        Console.WriteLine(eLibros + l7);// no debe cargar. return false
+        Console.WriteLine(eLibros + l1);
+        Console.WriteLine(eLibros + l2);
+        Console.WriteLine(eLibros + l3);
+        Console.WriteLine(eLibros + l4);
+        Console.WriteLine(eLibros + l5);
+        Console.WriteLine(eLibros + l10);// false, no debe cargar. el estado no esta en INICIO
+        Console.WriteLine(eLibros + l11);//false, no debe cargar, el estado no esta en INICIO
 
+        Console.WriteLine();
 
-        // Crea instancias de Libro 
-        Libro libro1 = new Libro("El Quijote", "Miguel de Cervantes", 1605, "123-4567890123", "001", 500);
-        Libro libro2 = new Libro("C# Programming", "John Doe", 2023, "123456789", "987654321", 350);
+        Libro L100 = new Libro("meditaciones", "Julio Cesar", 1990, "3824-3842", "9123482394", 190);//estado inicio
+        Mapa M100 = new Mapa("Chile", "alberto", 1940, "3238-8239", "38572982839", 200, 300); //estado inicio
 
-        // Muestra los datos del libro
-        Console.WriteLine(libro1.ToString());
-        Console.WriteLine(libro2.ToString());
+        Console.WriteLine("El escaner de mapa no debe aceptar libros y viceversa!!");
+        Console.WriteLine(eMapas + L100); //VERIFICACION. 
+        Console.WriteLine(eLibros + M100); //VERIFICACION.
 
-        // Crear instancias de Escaner
-        Escaner escanerLibros = new Escaner("HP", Escaner.TipoDoc.libro);
-        Escaner escanerMapas = new Escaner("Canon", Escaner.TipoDoc.mapa);
+        Console.WriteLine();
 
-        // Crea instancias de Mapa
-        Mapa mapa1 = new Mapa("Mapa del Mundo", "John Doe", 2022, "789-4561230789", "003", 20, 30);
-        Mapa mapa2 = new Mapa("City Map", "Cartographer", 2020, "1", "678901234", 150, 250);
+        eLibros.CambiarEstadoDocumento(l1);
 
-        // Muestra los datos del mapa
-        Console.WriteLine(mapa1.ToString());
-        Console.WriteLine(mapa2.ToString());
+        eLibros.CambiarEstadoDocumento(l2);
+        eLibros.CambiarEstadoDocumento(l2);
 
+        eLibros.CambiarEstadoDocumento(l3);
+        eLibros.CambiarEstadoDocumento(l3);
+        eLibros.CambiarEstadoDocumento(l3);
+        eLibros.CambiarEstadoDocumento(l3);
+        eLibros.CambiarEstadoDocumento(l3);
 
-        // Probar agregar libros al escáner de libros
-        bool agregado = escanerLibros + libro1;
-        Console.WriteLine($"Libro 1 agregado al escáner de libros: {agregado}");
+        Console.WriteLine();
 
-        agregado = escanerLibros + libro2;
-        Console.WriteLine($"Libro 2 agregado al escáner de libros: {agregado}");
+        //MOSTRAR DATOS LIBROS
+        Informes.MostrarDistribuidos(eLibros, out extension, out cantidad, out resumen);
+        Console.WriteLine("DISTRIBUIDOS");
+        Console.WriteLine($"cantidad de paginas: {extension}");
+        Console.WriteLine($"Cantidad de documentos: {cantidad} \n");
+        Console.WriteLine(resumen);
 
-        // Probar agregar mapas al escáner de mapas
-        agregado = escanerMapas + mapa1;
-        Console.WriteLine($"Mapa 1 agregado al escáner de mapas: {agregado}");
+        //EN ESCANER
+        Informes.MostrarEnEscaner(eLibros, out extension, out cantidad, out resumen);
+        Console.WriteLine("ESCANER");
+        Console.WriteLine($"cantidad de paginas: {extension}");
+        Console.WriteLine($"Cantidad de documentos: {cantidad}\n");
+        Console.WriteLine(resumen);
 
-        agregado = escanerMapas + mapa2;
-        Console.WriteLine($"Mapa 2 agregado al escáner de mapas: {agregado}");
+        //MOSTRAR EN REVISION
+        Informes.MostrarEnRevision(eLibros, out extension, out cantidad, out resumen);
+        Console.WriteLine("REVISION");
+        Console.WriteLine($"cantidad de paginas: {extension}");
+        Console.WriteLine($"Cantidad de documentos: {cantidad} \n");
+        Console.WriteLine(resumen);
 
-        // Probar agregar libro al escáner de mapas para que falle
-        agregado = escanerMapas + libro1;
-        Console.WriteLine($"Intento de agregar libro 1 al escáner de mapas: {agregado}");
+        //MOSTRAR EN TERMINADO
+        Informes.MostrarTerminados(eLibros, out extension, out cantidad, out resumen);
+        Console.WriteLine("TERMINADOS");
+        Console.WriteLine($"cantidad de paginas: {extension}");
+        Console.WriteLine($"Cantidad de documentos: {cantidad}\n");
+        Console.WriteLine(resumen);
 
-        // Probar agregar mapa al escáner de libros para que falle
-        agregado = escanerLibros + mapa1;
-        Console.WriteLine($"Intento de agregar mapa 1 al escáner de libros: {agregado}");
+        Console.WriteLine("\n***********************************\n");
 
-        // Mostrar documentos en estado "EnEscaner" para el escáner de libros
-        Informes.MostrarEnEscaner(escanerLibros, out int extLibrosEnEscaner, out int cantLibrosEnEscaner, out string resLibrosEnEscaner);
-        Console.WriteLine($"Libros en estado 'EnEscaner' en el escáner de libros:\n{resLibrosEnEscaner}\nTotal de extensión: {extLibrosEnEscaner}\nCantidad: {cantLibrosEnEscaner}");
+        Console.WriteLine("CARGA EN ESCANER SAMSUNG MAPAS");
+        Console.WriteLine("Carga de Mapas en el scaner de mapas");
+        Console.WriteLine(eMapas + m1);
+        Console.WriteLine(eMapas + m2);
+        Console.WriteLine(eMapas + m3);
+        Console.WriteLine(eMapas + m4);
+        Console.WriteLine(eMapas + m5); // no debe cargar. return false
+        Console.WriteLine(eMapas + m6); // no debe cargar. return false
+        Console.WriteLine(eMapas + m7);
 
-        // Mostrar documentos en estado "EnEscaner" para el escáner de mapas
-        Informes.MostrarEnEscaner(escanerMapas, out int extMapasEnEscaner, out int cantMapasEnEscaner, out string resMapasEnEscaner);
-        Console.WriteLine($"Mapas en estado 'EnEscaner' en el escáner de mapas:\n{resMapasEnEscaner}\nTotal de extensión: {extMapasEnEscaner}\nCantidad: {cantMapasEnEscaner}");
+        eMapas.CambiarEstadoDocumento(m2);
+        eMapas.CambiarEstadoDocumento(m3);
+        eMapas.CambiarEstadoDocumento(m3);
+        eMapas.CambiarEstadoDocumento(m4);
+        eMapas.CambiarEstadoDocumento(m4);
+        eMapas.CambiarEstadoDocumento(m4);
+        eMapas.CambiarEstadoDocumento(m7);
+        eMapas.CambiarEstadoDocumento(m7);
+        eMapas.CambiarEstadoDocumento(m7);
+        eMapas.CambiarEstadoDocumento(m7);
+        eMapas.CambiarEstadoDocumento(m7);
 
-        // Avanzar estado de los documentos
-        libro1.AvanzarEstado();
-        libro2.AvanzarEstado();
-        mapa1.AvanzarEstado();
-        mapa2.AvanzarEstado();
+        Console.WriteLine();
 
-        // Mostrar documentos en estado "Distribuido" para el escáner de libros
-        Informes.MostrarDistribuidos(escanerLibros, out int extLibrosDistribuidos, out int cantLibrosDistribuidos, out string resLibrosDistribuidos);
-        Console.WriteLine($"Libros en estado 'Distribuido' en el escáner de libros:\n{resLibrosDistribuidos}\nTotal de extensión: {extLibrosDistribuidos}\nCantidad: {cantLibrosDistribuidos}");
+        Informes.MostrarDistribuidos(eMapas, out extension, out cantidad, out resumen);
+        Console.WriteLine("DISTRIBUIDOS");
+        Console.WriteLine($"total de superficie: {extension}");
+        Console.WriteLine($"Cantidad de documentos: {cantidad}\n");
+        Console.WriteLine(resumen);
 
-        // Mostrar documentos en estado "Distribuido" para el escáner de mapas
-        Informes.MostrarDistribuidos(escanerMapas, out int extMapasDistribuidos, out int cantMapasDistribuidos, out string resMapasDistribuidos);
-        Console.WriteLine($"Mapas en estado 'Distribuido' en el escáner de mapas:\n{resMapasDistribuidos}\nTotal de extensión: {extMapasDistribuidos}\nCantidad: {cantMapasDistribuidos}");
+        Informes.MostrarEnEscaner(eMapas, out extension, out cantidad, out resumen);
+        Console.WriteLine("ESCANER");
+        Console.WriteLine($"total de superficie: {extension}");
+        Console.WriteLine($"Cantidad de documentos: {cantidad}\n");
+        Console.WriteLine(resumen);
 
-        // Avanzar estado de los documentos nuevamente
-        libro1.AvanzarEstado();
-        libro2.AvanzarEstado();
-        mapa1.AvanzarEstado();
-        mapa2.AvanzarEstado();
+        Informes.MostrarEnRevision(eMapas, out extension, out cantidad, out resumen);
+        Console.WriteLine("REVISION");
+        Console.WriteLine($"total de superficie: {extension}");
+        Console.WriteLine($"Cantidad de documentos: {cantidad} \n");
+        Console.WriteLine(resumen);
 
-        // Mostrar documentos en estado "Terminado" para el escáner de libros
-        Informes.MostrarTerminados(escanerLibros, out int extLibrosTerminados, out int cantLibrosTerminados, out string resLibrosTerminados);
-        Console.WriteLine($"Libros en estado 'Terminado' en el escáner de libros:\n{resLibrosTerminados}\nTotal de extensión: {extLibrosTerminados}\nCantidad: {cantLibrosTerminados}");
+        Informes.MostrarTerminados(eMapas, out extension, out cantidad, out resumen);
+        Console.WriteLine("TERMINADOS");
+        Console.WriteLine($"total de superficie: {extension}");
+        Console.WriteLine($"Cantidad de documentos: {cantidad}\n");
+        Console.WriteLine(resumen);
 
-        // Mostrar documentos en estado "Terminado" para el escáner de mapas
-        Informes.MostrarTerminados(escanerMapas, out int extMapasTerminados, out int cantMapasTerminados, out string resMapasTerminados);
-        Console.WriteLine($"Mapas en estado 'Terminado' en el escáner de mapas:\n{resMapasTerminados}\nTotal de extensión: {extMapasTerminados}\nCantidad: {cantMapasTerminados}");
+        //VERIFICACION DE DOCUMENTOS CAMBIANDO DE ESTADO
+        Console.ReadKey();
     }
 }

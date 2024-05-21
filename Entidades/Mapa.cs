@@ -17,28 +17,36 @@ namespace Entidades
         public int Ancho { get { return ancho; } }
         public int Superficie => Alto * Ancho;
 
-        //METODOS
+
+        //CONSTRUCTOR
+
+        /// <summary>
+        /// Crea una nueva instancia de la clase Mapa con los datos proporcionados.
+        /// </summary>
+        /// <param name="titulo">El título del mapa.</param>
+        /// <param name="autor">El autor del mapa.</param>
+        /// <param name="anio">El año de publicación del mapa.</param>
+        /// <param name="numNormalizado">El número normalizado del documento (no utilizado en mapas).</param>
+        /// <param name="codebar">El código de barras del mapa.</param>
+        /// <param name="ancho">El ancho del mapa.</param>
+        /// <param name="alto">El alto del mapa.</param>
         public Mapa(string titulo, string autor, int anio,string numNormalizado, string codebar, int ancho, int alto)
             : base(titulo, autor, anio, numNormalizado, codebar)
         {
-            // ignoramos el parámetro numNormalizado (Mapas no tienen)
+            // ignorar el parámetro numNormalizado (Mapas no tienen)
             this.ancho = ancho;
             this.alto = alto;
         }
 
-        /*
-        public static bool operator !=(Mapa m1, Mapa m2) => !(m1 == m2);
 
-        public static bool operator ==(Mapa m1, Mapa m2)
-        {
-            if (ReferenceEquals(m1, m2)) return true;
-            if (ReferenceEquals(m1, null) || ReferenceEquals(m2, null)) return false;
+        //SOBRECARGAS
 
-            return m1.Barcode == m2.Barcode || (m1.Titulo == m2.Titulo && m1.Autor == m2.Autor && m1.Anio == m2.Anio && m1.Superficie == m2.Superficie);
-        }
-        */
-
-        // Sobrecarga del operador ==
+        /// <summary>
+        /// Sobrecarga del operador == para comprar dos mapas y determinar si son iguales.
+        /// </summary>
+        /// <param name="mapa1">El primer mapa a comparar.</param>
+        /// <param name="mapa2">El segundo mapa a comparar.</param>
+        /// <returns>True si los mapas son iguales, False en caso contrario.</returns>
         public static bool operator ==(Mapa mapa1, Mapa mapa2)
         {
             // Verificar si alguno de los campos es igual en ambos mapas
@@ -47,18 +55,33 @@ namespace Entidades
                     mapa1.Anio == mapa2.Anio && mapa1.Superficie == mapa2.Superficie);
         }
 
-        // Sobrecarga del operador !=
+
+        /// <summary>
+        /// Sobrecarga del operador != para compara dos mapas y determinar si son diferentes.
+        /// </summary>
+        /// <param name="mapa1">El primer mapa a comparar.</param>
+        /// <param name="mapa2">El segundo mapa a comparar.</param>
+        /// <returns>True si los mapas son diferentes, False si son iguales.</returns>
         public static bool operator !=(Mapa mapa1, Mapa mapa2)
         {
             // Invertimos el resultado de la sobrecarga del operador ==
             return !(mapa1 == mapa2);
         }
 
+
+        //METODOS
+
+        /// <summary>
+        /// Retorna una cadena con los datos del mapa.
+        /// </summary>
+        /// <returns>Cadena con los datos del mapa o vacio si ocurrió un error.</returns>
         public override string ToString()
         {
             var sb = new StringBuilder(base.ToString());
             sb.AppendLine($"Superficie: {Ancho} * {Alto} = {Superficie} cm2.");
             return sb.ToString();
         }
+
+
     }
 }

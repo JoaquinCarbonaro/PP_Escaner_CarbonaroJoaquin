@@ -16,6 +16,7 @@ namespace Entidades
         private string numNormalizado;
         private string titulo;
 
+
         //PROPIEDADES
         public int Anio { get { return anio; } }
         public string Autor { get { return autor; } }
@@ -24,30 +25,17 @@ namespace Entidades
         protected string NumNormalizado { get { return numNormalizado; } }
         public string Titulo { get { return titulo; } }
 
-        //METODOS
-        public bool AvanzarEstado()
-        {
-            if (Estado == Paso.Terminado)
-                return false;
 
-            this.estado++;
-            return true;
-        }
+        //CONSTRUCTOR
 
-        //public bool AvanzarEstado()
-        //{
-        //    bool retorno = true;
-        //    if (Estado == Paso.Terminado)
-        //    {
-        //        retorno = false;
-        //    }
-        //    else
-        //    {
-        //        estado++;
-        //    }
-        //    return retorno;
-        //}
-
+        /// <summary>
+        /// Crea una nueva instancia de la clase Documento con los datos proporcionados.
+        /// </summary>
+        /// <param name="titulo">El título del documento.</param>
+        /// <param name="autor">El autor del documento.</param>
+        /// <param name="anio">El año de publicación del documento.</param>
+        /// <param name="numNormalizado">El número normalizado del documento.</param>
+        /// <param name="barcode">El código de barras del documento.</param>
         public Documento(string titulo, string autor, int anio, string numNormalizado, string barcode)
         {
             this.titulo = titulo;
@@ -58,6 +46,28 @@ namespace Entidades
             this.estado = Paso.Inicio;
         }
 
+
+        //METODOS
+
+        /// <summary>
+        /// Avanza el estado del documento al siguiente paso.
+        /// </summary>
+        /// <returns>True si el estado se pudo avanzar, false si ya estaba en el estado final o si ocurrió un error.</returns>
+        public bool AvanzarEstado()
+        {
+            if (Estado == Paso.Terminado)
+            {
+                return false;
+            }
+
+            estado++;
+            return true;
+        }
+
+        /// <summary>
+        /// Retorna una cadena con los datos del documento.
+        /// </summary>
+        /// <returns>Cadena con los datos del documento o vacio si ocurrió un error.</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -67,6 +77,7 @@ namespace Entidades
             sb.AppendLine($"Cód. de barras: {Barcode}");
             return sb.ToString();
         }
+
 
         //TIPOS ANIDADOS (ENUM)
         public enum Paso

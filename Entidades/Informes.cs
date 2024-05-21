@@ -12,11 +12,27 @@ namespace Entidades
     public static class Informes
     {
         //METODOS
+
+        /// <summary>
+        /// Muestra los documentos que están en estado 'Distribuido' del escáner.
+        /// </summary>
+        /// <param name="e">El escáner del cual se obtendrán los documentos.</param>
+        /// <param name="extension">Extensión total de los documentos distribuidos.</param>
+        /// <param name="cantidad">Cantidad de documentos distribuidos.</param>
+        /// <param name="resumen">Resumen de los documentos distribuidos.</param>
         public static void MostrarDistribuidos(Escaner e, out int extension, out int cantidad, out string resumen)
         {
             MostrarDocumentosPorEstado(e, Paso.Distribuido, out extension, out cantidad, out resumen);
         }
 
+        /// <summary>
+        /// Muestra los documentos del escáner que están en el estado especificado.
+        /// </summary>
+        /// <param name="e">El escáner del cual se obtendrán los documentos.</param>
+        /// <param name="estado">El estado de los documentos a filtrar.</param>
+        /// <param name="extension">Extensión total de los documentos en el estado especificado.</param>
+        /// <param name="cantidad">Cantidad de documentos en el estado especificado.</param>
+        /// <param name="resumen">Resumen de los documentos en el estado especificado.</param>
         private static void MostrarDocumentosPorEstado(Escaner e, Paso estado, out int extension, out int cantidad, out string resumen)
         {
             // Filtra los documentos del escáner que tienen el estado especificado
@@ -55,45 +71,42 @@ namespace Entidades
             resumen = sb.ToString(); //Convierte el StringBuilder en una cadena y asigna a resumen.
         }
 
-        /*
-        private static void MostrarDocumentosPorEstado(Escaner e, Paso estado, out int extension, out int cantidad, out string resumen)
-        {
-            extension = 0;
-            cantidad = 0;
-            StringBuilder sb = new StringBuilder();
-
-            foreach (var doc in e.ListaDocumentos.Where(d => d.Estado == estado))
-            {
-                cantidad++;
-                sb.AppendLine(doc.ToString());
-
-                if (doc is Libro libro)
-                {
-                    extension += libro.NumPaginas;
-                }
-                else if (doc is Mapa mapa)
-                {
-                    extension += mapa.Superficie;
-                }
-            }
-            resumen = sb.ToString();
-        }
-        */
-
+        /// <summary>
+        /// Muestra los documentos que están en estado 'En Escaner' del escáner.
+        /// </summary>
+        /// <param name="e">El escáner del cual se obtendrán los documentos.</param>
+        /// <param name="extension">Extensión total de los documentos en escáner.</param>
+        /// <param name="cantidad">Cantidad de documentos en escáner.</param>
+        /// <param name="resumen">Resumen de los documentos en escáner.</param>
         public static void MostrarEnEscaner(Escaner e, out int extension, out int cantidad, out string resumen)
         {
             MostrarDocumentosPorEstado(e, Paso.EnEscaner, out extension, out cantidad, out resumen);
         }
 
+        /// <summary>
+        /// Muestra los documentos que están en estado 'En Revision' del escáner.
+        /// </summary>
+        /// <param name="e">El escáner del cual se obtendrán los documentos.</param>
+        /// <param name="extension">Extensión total de los documentos en revisión.</param>
+        /// <param name="cantidad">Cantidad de documentos en revisión.</param>
+        /// <param name="resumen">Resumen de los documentos en revisión.</param>
         public static void MostrarEnRevision(Escaner e, out int extension, out int cantidad, out string resumen)
         {
             MostrarDocumentosPorEstado(e, Paso.EnRevision, out extension, out cantidad, out resumen);
         }
 
+        /// <summary>
+        /// Muestra los documentos que están en estado 'Terminado' del escáner.
+        /// </summary>
+        /// <param name="e">El escáner del cual se obtendrán los documentos.</param>
+        /// <param name="extension">Extensión total de los documentos terminados.</param>
+        /// <param name="cantidad">Cantidad de documentos terminados.</param>
+        /// <param name="resumen">Resumen de los documentos terminados.</param>
         public static void MostrarTerminados(Escaner e, out int extension, out int cantidad, out string resumen)
         {
             MostrarDocumentosPorEstado(e, Paso.Terminado, out extension, out cantidad, out resumen);
         }
+
 
     }
 }
