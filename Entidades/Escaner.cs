@@ -104,15 +104,11 @@ namespace Entidades
                 // Recorrer la lista (de objetos) de documentos del escáner
                 foreach (Documento doc in e.listaDocumentos) 
                 {
-                    // Si el documento(parametro) y el documento(lista) son libros y (casteando) los libros entre si coinciden (segun sobrecarga ==)
-                    if (d is Libro && doc is Libro && ((Libro)d == (Libro)doc)) 
+                    // Si el documento(parametro) y el documento(lista) son de la misma clase y (casteando) los documentos entre si coinciden (segun sobrecarga ==)
+                    if ((d is Libro && doc is Libro && ((Libro)d == (Libro)doc)) || (d is Mapa && doc is Mapa && ((Mapa)d == (Mapa)doc)))
                     {
                         respuesta = true;
-                    }
-                    // Si el documento es un mapa y coincide con un mapa en la lista
-                    else if (d is Mapa && doc is Mapa && ((Mapa)d == (Mapa)doc))
-                    {
-                        respuesta = true;
+                        break;
                     }
                 }
             }
@@ -137,26 +133,18 @@ namespace Entidades
                 // Recorrer la lista de documentos del escáner(actual)
                 foreach (Documento doc in this.listaDocumentos)
                 {
-                    // Si la ubicación del escáner es "procesosTecnicos", se trata de un libro
-                    if (this.locacion == Departamento.procesosTecnicos)
+                    // Si la ubicación del escáner es "procesosTecnicos", se trata de un libro y (casteando) Compara (segun sobrecarga ==) el documento (parámetro) con el documento (actual)
+                    if ((this.locacion == Departamento.procesosTecnicos) && ((Libro)d == (Libro)doc))
                     {
-                        // (casteando) Compara (segun sobrecarga ==) el documento (actual) con el documento (parámetro)
-                        if ((Libro)d == (Libro)doc) //parseo
-                        {
-                            // Cambiar el estado del documento (dentro del escáner)
+                        // Cambiar el estado del documento (dentro del escáner)
                             respuesta = doc.AvanzarEstado();
                             break;
-                        }
                     }
-                    // Si la ubicación del escáner es "mapoteca", se trata de un mapa
-                    else if (this.locacion == Departamento.mapoteca) 
+                    // Si la ubicación del escáner es "mapoteca", se trata de un mapa y Comparar el documento pasado como parámetro con el documento actual
+                    else if ((this.locacion == Departamento.mapoteca) && ((Mapa)d == (Mapa)doc))
                     {
-                        // Comparar el documento actual con el documento pasado como parámetro
-                        if ((Mapa)d == (Mapa)doc)
-                        {
                             respuesta = doc.AvanzarEstado();
                             break;
-                        }
                     }
                 }
             }
