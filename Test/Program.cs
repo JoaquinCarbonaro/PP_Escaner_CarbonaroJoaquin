@@ -21,10 +21,10 @@ class Program
         Libro book5 = new Libro("Clásicos", "Jane Austen", 2013, "105-e", "9785555555555", 280);
         Libro book6 = new Libro("Historia", "John Doe", 1996, "106-f", "9786666666666", 420);
         // PRUEBA: Repetido de book6
-        Libro book7 = new Libro("Historia", "John Doe", 1996, "106-f", "9786666666666", 420); // Repetido de 
+        Libro book7 = new Libro("Historia", "John Doe", 1996, "106-f", "9786666666666", 420);
         Libro book8 = new Libro("Mitología", "Emily Clark", 2017, "107-g", "9787777777777", 510);
-
-        Libro book9 = new Libro("Mitología", "Emily Clark", 2008, "108-h", "9788888888888", 375); // Repetido de book4
+        // PRUEBA: Repetido de book8
+        Libro book9 = new Libro("Mitología", "Emily Clark", 2008, "108-h", "9788888888888", 375);
 
         //PRUEBA: no deben cargarse, estado dif. INICIO
         // Estado distribuido
