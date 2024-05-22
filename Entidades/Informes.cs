@@ -35,38 +35,39 @@ namespace Entidades
         /// <param name="resumen">Resumen de los documentos en el estado especificado.</param>
         private static void MostrarDocumentosPorEstado(Escaner e, Paso estado, out int extension, out int cantidad, out string resumen)
         {
-            // Filtra los documentos del escáner("e"), recorriendo c/documento ("d") que tienen el estado especificado("estado")
-            // convierte el resultado en una lista de documentos
-            var documentos = e.ListaDocumentos.Where(d => d.Estado == estado).ToList();
-
-            // Calcula la cantidad de documentos (en el estado especifico)
-            cantidad = documentos.Count;
-
-            // Inicializa la extensión en 0
+            // Inicializamos las variables de salida
             extension = 0;
+            cantidad = 0;
+            resumen = "";
 
-            // construye StringBuilder para el resumen
-            var sb = new StringBuilder();
-
-            //Itera sobre cada documento filtrado.
-            foreach (var doc in documentos)
+            // Recorremos todos los documentos en la lista del escáner
+            foreach (Documento d in e.ListaDocumentos)
             {
-                // Agrega la representación textual del documento al resumen
-                sb.AppendLine(doc.ToString());
+                // Si el documento está en el estado especificado
+                if (d.Estado == estado)
+                {
+                    // Si el tipo de documento del escáner es un libro, sumamos el número de páginas a la extensión total
+                    if (e.Tipo == Escaner.TipoDoc.libro)
+                    {
+                        Libro libro = (Libro)d;
+                        extension += libro.NumPaginas;
+                    }
+                    // Si el tipo de documento del escáner es un mapa, sumamos la superficie a la extensión total
+                    else if (e.Tipo == Escaner.TipoDoc.mapa)
+                    {
+                        Mapa mapa = (Mapa)d;
+                        extension += mapa.Superficie;
+                    }
 
-                // Si el documento es un libro (compara creando instancia del objeto libro), suma el número de páginas
-                if (doc is Libro libro)
-                {
-                    extension += libro.NumPaginas;
-                }
-                // Si el documento es un mapa, suma la superficie
-                else if (doc is Mapa mapa)
-                {
-                    extension += mapa.Superficie;
+                    // Agregamos el documento al resumen
+                    resumen += d.ToString();
+
+                    // Incrementamos la cantidad de documentos que cumplen con el estado especificado
+                    cantidad++;
                 }
             }
-            resumen = sb.ToString();
         }
+
 
         /// <summary>
         /// Muestra los documentos que están en estado 'En Escaner' del escáner.

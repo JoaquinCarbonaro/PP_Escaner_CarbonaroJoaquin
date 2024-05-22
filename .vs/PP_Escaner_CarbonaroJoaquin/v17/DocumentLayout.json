@@ -7,20 +7,20 @@
       "RelativeMoniker": "D:0:0:{C1E303FA-B131-45E4-80F0-8927B102C041}|Test\\Test.csproj|solutionrelative:test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DAF216B-0D0B-4681-BBEB-068543B9EF18}|Entidades\\Entidades.csproj|c:\\users\\joaco\\documents\\joaco\\utn\\2-2do cuatrimestre\\1-programacion y laboratorio\\1er parcial\\pp_escaner_carbonarojoaquin\\entidades\\mapa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DAF216B-0D0B-4681-BBEB-068543B9EF18}|Entidades\\Entidades.csproj|solutionrelative:entidades\\mapa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DAF216B-0D0B-4681-BBEB-068543B9EF18}|Entidades\\Entidades.csproj|c:\\users\\joaco\\documents\\joaco\\utn\\2-2do cuatrimestre\\1-programacion y laboratorio\\1er parcial\\pp_escaner_carbonarojoaquin\\entidades\\libro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DAF216B-0D0B-4681-BBEB-068543B9EF18}|Entidades\\Entidades.csproj|solutionrelative:entidades\\libro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0DAF216B-0D0B-4681-BBEB-068543B9EF18}|Entidades\\Entidades.csproj|c:\\users\\joaco\\documents\\joaco\\utn\\2-2do cuatrimestre\\1-programacion y laboratorio\\1er parcial\\pp_escaner_carbonarojoaquin\\entidades\\documento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0DAF216B-0D0B-4681-BBEB-068543B9EF18}|Entidades\\Entidades.csproj|solutionrelative:entidades\\documento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0DAF216B-0D0B-4681-BBEB-068543B9EF18}|Entidades\\Entidades.csproj|c:\\users\\joaco\\documents\\joaco\\utn\\2-2do cuatrimestre\\1-programacion y laboratorio\\1er parcial\\pp_escaner_carbonarojoaquin\\entidades\\informes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0DAF216B-0D0B-4681-BBEB-068543B9EF18}|Entidades\\Entidades.csproj|solutionrelative:entidades\\informes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DAF216B-0D0B-4681-BBEB-068543B9EF18}|Entidades\\Entidades.csproj|c:\\users\\joaco\\documents\\joaco\\utn\\2-2do cuatrimestre\\1-programacion y laboratorio\\1er parcial\\pp_escaner_carbonarojoaquin\\entidades\\libro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DAF216B-0D0B-4681-BBEB-068543B9EF18}|Entidades\\Entidades.csproj|solutionrelative:entidades\\libro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DAF216B-0D0B-4681-BBEB-068543B9EF18}|Entidades\\Entidades.csproj|c:\\users\\joaco\\documents\\joaco\\utn\\2-2do cuatrimestre\\1-programacion y laboratorio\\1er parcial\\pp_escaner_carbonarojoaquin\\entidades\\mapa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DAF216B-0D0B-4681-BBEB-068543B9EF18}|Entidades\\Entidades.csproj|solutionrelative:entidades\\mapa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0DAF216B-0D0B-4681-BBEB-068543B9EF18}|Entidades\\Entidades.csproj|c:\\users\\joaco\\documents\\joaco\\utn\\2-2do cuatrimestre\\1-programacion y laboratorio\\1er parcial\\pp_escaner_carbonarojoaquin\\entidades\\escaner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,38 +47,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Documento.cs",
-              "DocumentMoniker": "C:\\Users\\joaco\\Documents\\JOACO\\UTN\\2-2do Cuatrimestre\\1-Programacion y laboratorio\\1ER PARCIAL\\PP_Escaner_CarbonaroJoaquin\\Entidades\\Documento.cs",
-              "RelativeDocumentMoniker": "Entidades\\Documento.cs",
-              "ToolTip": "C:\\Users\\joaco\\Documents\\JOACO\\UTN\\2-2do Cuatrimestre\\1-Programacion y laboratorio\\1ER PARCIAL\\PP_Escaner_CarbonaroJoaquin\\Entidades\\Documento.cs",
-              "RelativeToolTip": "Entidades\\Documento.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEUAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T21:16:27.855Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Libro.cs",
               "DocumentMoniker": "C:\\Users\\joaco\\Documents\\JOACO\\UTN\\2-2do Cuatrimestre\\1-Programacion y laboratorio\\1ER PARCIAL\\PP_Escaner_CarbonaroJoaquin\\Entidades\\Libro.cs",
               "RelativeDocumentMoniker": "Entidades\\Libro.cs",
               "ToolTip": "C:\\Users\\joaco\\Documents\\JOACO\\UTN\\2-2do Cuatrimestre\\1-Programacion y laboratorio\\1ER PARCIAL\\PP_Escaner_CarbonaroJoaquin\\Entidades\\Libro.cs",
               "RelativeToolTip": "Entidades\\Libro.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAYwCIAAAAJAAAA",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAUwFwAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-19T21:15:03.744Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Mapa.cs",
               "DocumentMoniker": "C:\\Users\\joaco\\Documents\\JOACO\\UTN\\2-2do Cuatrimestre\\1-Programacion y laboratorio\\1ER PARCIAL\\PP_Escaner_CarbonaroJoaquin\\Entidades\\Mapa.cs",
               "RelativeDocumentMoniker": "Entidades\\Mapa.cs",
               "ToolTip": "C:\\Users\\joaco\\Documents\\JOACO\\UTN\\2-2do Cuatrimestre\\1-Programacion y laboratorio\\1ER PARCIAL\\PP_Escaner_CarbonaroJoaquin\\Entidades\\Mapa.cs",
               "RelativeToolTip": "Entidades\\Mapa.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAA3wCMAAAAAAAAA",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAcwEwAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-19T21:16:58.724Z",
               "EditorCaption": ""
@@ -93,20 +80,32 @@
               "RelativeToolTip": "Entidades\\Escaner.cs",
               "ViewState": "AQIAAHkAAAAAAAAAAADwv34AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T21:20:03.239Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T21:20:03.239Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Informes.cs",
               "DocumentMoniker": "C:\\Users\\joaco\\Documents\\JOACO\\UTN\\2-2do Cuatrimestre\\1-Programacion y laboratorio\\1ER PARCIAL\\PP_Escaner_CarbonaroJoaquin\\Entidades\\Informes.cs",
               "RelativeDocumentMoniker": "Entidades\\Informes.cs",
               "ToolTip": "C:\\Users\\joaco\\Documents\\JOACO\\UTN\\2-2do Cuatrimestre\\1-Programacion y laboratorio\\1ER PARCIAL\\PP_Escaner_CarbonaroJoaquin\\Entidades\\Informes.cs",
               "RelativeToolTip": "Entidades\\Informes.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAQwC8AAAAaAAAA",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAIwEMAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-19T21:20:24.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Documento.cs",
+              "DocumentMoniker": "C:\\Users\\joaco\\Documents\\JOACO\\UTN\\2-2do Cuatrimestre\\1-Programacion y laboratorio\\1ER PARCIAL\\PP_Escaner_CarbonaroJoaquin\\Entidades\\Documento.cs",
+              "RelativeDocumentMoniker": "Entidades\\Documento.cs",
+              "ToolTip": "C:\\Users\\joaco\\Documents\\JOACO\\UTN\\2-2do Cuatrimestre\\1-Programacion y laboratorio\\1ER PARCIAL\\PP_Escaner_CarbonaroJoaquin\\Entidades\\Documento.cs",
+              "RelativeToolTip": "Entidades\\Documento.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE4AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T21:16:27.855Z",
               "EditorCaption": ""
             },
             {
@@ -117,7 +116,7 @@
               "RelativeDocumentMoniker": "Test\\Program.cs",
               "ToolTip": "C:\\Users\\joaco\\Documents\\JOACO\\UTN\\2-2do Cuatrimestre\\1-Programacion y laboratorio\\1ER PARCIAL\\PP_Escaner_CarbonaroJoaquin\\Test\\Program.cs",
               "RelativeToolTip": "Test\\Program.cs",
-              "ViewState": "AQIAAFsAAAAAAAAAAAAQwBsAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-19T20:45:18.527Z",
               "EditorCaption": ""

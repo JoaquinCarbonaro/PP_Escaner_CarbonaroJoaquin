@@ -1,194 +1,160 @@
-﻿using System;
-using Entidades;
+﻿using Entidades;
 
-class Program
+namespace Test
 {
-    static void Main()
+    internal class Program
     {
-        int totalPaginas; //extension
-        int totalDocumentos; //cantidad
-        string resumen; //resumen
+        static void Main(string[] args)
+        {
+            // LIBROS
+            // Caminos felices
+            Libro l1 = new Libro("Yerma", "García Lorca, Federico", 1995, "11111", "22222", 100);
+            Libro l2 = new Libro("Bodas de sangre", "García Lorca, Federico", 1997, "11112", "22223", 200);
+            // Barcode repetido
+            Libro l3 = new Libro("Codebar repetido", "García Lorca, Federico", 2003, "11113", "22222", 3);
+            // ISBN repetido
+            Libro l4 = new Libro("ISBN repetido", "García Lorca, Federico", 2003, "11112", "22224", 2);
+            // Título-autor repetido
+            Libro l5 = new Libro("Yerma", "García Lorca, Federico", 2003, "55555", "66666", 1);
 
+            //MAPAS 
+            // Caminos felices
+            Mapa m1 = new Mapa("Buenos Aires", "Instituto Geográfico de Buenos Aires", 2005, "", "99999", 30, 15); //450
+            Mapa m2 = new Mapa("Mendoza", "Instituto Geográfico de Mendoza", 2008, "", "99990", 100, 30); //300
+            Mapa m3 = new Mapa("Santa Fe", "Instituto Geográfico de Santa Fe", 2010, "", "99991", 80, 30); //2400
+            Mapa m4 = new Mapa("Corrientes", "Instituto Geográfico de Corrientes", 2013, "", "99992", 50, 25); //1250
+            // Barcode repetido
+            Mapa m5 = new Mapa("Barcode repetido", "Instituto Geográfico", 2015, "", "99999", 40, 15);//600
+            // Título - autor - superficie
+            Mapa m6 = new Mapa("Buenos Aires", "Instituto Geográfico de Buenos Aires", 2005, "", "99993", 30, 15);//200
 
-        //Instancia escaner LIBRO
-        Escaner escanerLibros = new Escaner("Canon", Escaner.TipoDoc.libro);
+            //ESCANERS
+            Escaner l = new Escaner("HP", Escaner.TipoDoc.libro);
+            Escaner m = new Escaner("HP", Escaner.TipoDoc.mapa);
 
-        // Instancia de LIBRO
-        Libro book1 = new Libro("Ficción", "Mary Shelley", 2019, "101-a", "9781111111111", 500);
-        Libro book2 = new Libro("Educación Financiera", "Susan Lee", 2021, "102-b", "9782222222222", 450);
-        Libro book3 = new Libro("Crecimiento Personal", "Michael King", 2005, "103-c", "9783333333333", 330);
-        Libro book4 = new Libro("Aventura", "James Bond", 2008, "104-d", "9784444444444", 375);
-        Libro book5 = new Libro("Clásicos", "Jane Austen", 2013, "105-e", "9785555555555", 280);
-        Libro book6 = new Libro("Historia", "John Doe", 1996, "106-f", "9786666666666", 420);
-        // PRUEBA: Repetido de book6
-        Libro book7 = new Libro("Historia", "John Doe", 1996, "106-f", "9786666666666", 420);
-        Libro book8 = new Libro("Mitología", "Emily Clark", 2017, "107-g", "9787777777777", 510);
-        // PRUEBA: Repetido de book8
-        Libro book9 = new Libro("Mitología", "Emily Clark", 2008, "108-h", "9788888888888", 375);
+            bool pudo = l + l1;
+            pudo = l + l2;
+            pudo = l + l3;
+            pudo = l + l4;
+            pudo = l + l5;
+            pudo = m + m1;
+            pudo = m + m2;
+            pudo = m + m3;
+            pudo = m + m4;
+            pudo = m + m5;
+            pudo = m + m6;
+            pudo = m + l1;
+            pudo = l + m1;
 
-        //PRUEBA: no deben cargarse, estado dif. INICIO
-        // Estado distribuido
-        Libro book10 = new Libro("Fantasía", "Peter Pan", 1995, "109-i", "9789999999999", 350);
-        book10.AvanzarEstado();
+            l1.AvanzarEstado();
+            l1.AvanzarEstado();
+            l2.AvanzarEstado();
+            l2.AvanzarEstado();
+            m2.AvanzarEstado();
+            m3.AvanzarEstado();
+            m3.AvanzarEstado();
+            m3.AvanzarEstado();
+            m4.AvanzarEstado();
+            m4.AvanzarEstado();
+            m4.AvanzarEstado();
+            m4.AvanzarEstado();
+            m4.AvanzarEstado();
 
-        // Estado en revisión
-        Libro book11 = new Libro("Ciencia Ficción", "Isaac Asimov", 1990, "110-j", "9781010101010", 540);
-        book11.AvanzarEstado();
-        book11.AvanzarEstado();
+            Informes.MostrarDistribuidos(l, out int extensionLibroDistr, out int cantidadLibroDistr, out string resumenLibroDistr);
+            Informes.MostrarEnEscaner(l, out int extensionLibroEnEsc, out int cantidadLibroEnEsc, out string resumenLibroEnEsc);
+            Informes.MostrarEnRevision(l, out int extensionLibroEnRev, out int cantidadLibroEnRev, out string resumenLibroEnRev);
+            Informes.MostrarTerminados(l, out int extensionLibroTerminado, out int cantidadLibroTerminado, out string resumenLibroTerminado);
 
+            Informes.MostrarDistribuidos(m, out int extensionMapaDistr, out int cantidadMapaDistr, out string resumenMapaDistr);
+            Informes.MostrarEnEscaner(m, out int extensionMapaEnEsc, out int cantidadMapaEnEsc, out string resumenMapaEnEsc); ;
+            Informes.MostrarEnRevision(m, out int extensionMapaEnRev, out int cantidadMapaEnRev, out string resumenMapaEnRev);
+            Informes.MostrarTerminados(m, out int extensionMapaTerminado, out int cantidadMapaTerminado, out string resumenMapaTerminado);
 
-        Console.WriteLine("++++++++++++++++++++++++++++++++");
+            int puntos = 0;
 
+            if (extensionLibroDistr == 0) { puntos += 3; }
+            if (cantidadLibroDistr == 0) { puntos += 1; }
+            if (resumenLibroDistr == "") { puntos += 1; }
 
-        //PRUEBA: Carga de libros (scanner libro)
-        Console.WriteLine(escanerLibros + book1);
-        Console.WriteLine(escanerLibros + book2);
-        Console.WriteLine(escanerLibros + book3);
-        Console.WriteLine(escanerLibros + book4);
-        Console.WriteLine(escanerLibros + book5);
-        Console.WriteLine(escanerLibros + book6);
-        Console.WriteLine(escanerLibros + book7); // No debe cargar, return false
-        Console.WriteLine(escanerLibros + book8);
-        Console.WriteLine(escanerLibros + book9); // No debe cargar, return false
-        Console.WriteLine(escanerLibros + book10); // No debe cargar, estado no está en INICIO
-        Console.WriteLine(escanerLibros + book11); // No debe cargar, estado no está en INICIO
+            if (extensionLibroEnEsc == 0) { puntos += 3; }
+            if (cantidadLibroEnEsc == 0) { puntos += 1; }
+            if (resumenLibroEnEsc == "") { puntos += 1; }
 
+            if (extensionLibroEnRev == l1.NumPaginas + l2.NumPaginas) { puntos += 3; }
+            if (cantidadLibroEnRev == 2) { puntos += 1; }  
+            if (resumenLibroEnRev == l1.ToString() + l2.ToString()) { puntos += 1; } //error
 
-        //PRUEBA: Cambio de Estado de Documentos:
-        escanerLibros.CambiarEstadoDocumento(book1);
+            if (extensionLibroTerminado == 0) { puntos += 3; }
+            if (cantidadLibroTerminado == 0) { puntos += 1; }
+            if (resumenLibroTerminado == "") { puntos += 1; }
 
-        escanerLibros.CambiarEstadoDocumento(book2);
-        escanerLibros.CambiarEstadoDocumento(book2);
+            if (extensionMapaDistr == m1.Superficie) { puntos += 3; }
+            if (cantidadMapaDistr == 1) { puntos += 1; }
+            if (resumenMapaDistr == m1.ToString()) { puntos += 1; } //error
 
-        escanerLibros.CambiarEstadoDocumento(book3);
-        escanerLibros.CambiarEstadoDocumento(book3);
-        escanerLibros.CambiarEstadoDocumento(book3);
-        escanerLibros.CambiarEstadoDocumento(book3);
-        escanerLibros.CambiarEstadoDocumento(book3);
+            if (extensionMapaEnEsc == m2.Superficie) { puntos += 3; }
+            if (cantidadMapaEnEsc == 1) { puntos += 1; }
+            if (resumenMapaEnEsc == m2.ToString()) { puntos += 1; }//error
 
+            if (extensionMapaEnRev == 0) { puntos += 3; }
+            if (cantidadMapaEnRev == 0) { puntos += 1; }
+            if (resumenMapaEnRev == "") { puntos += 1; }
 
-        Console.WriteLine("++++++++++++++++++++++++++++++++");
+            if (extensionMapaTerminado == m3.Superficie + m4.Superficie) { puntos += 3; }
+            if (cantidadMapaTerminado == 2) { puntos += 1; }
+            if (resumenMapaTerminado == m3.ToString() + m4.ToString()) { puntos += 1; }//error
 
+            Console.WriteLine($"Puntos: {puntos} / 40");
 
-        // PRUEBA: Generación de Informes para Libros: DISTRIBUIDOS
-        Informes.MostrarDistribuidos(escanerLibros, out totalPaginas, out totalDocumentos, out resumen);
-        Console.WriteLine($"Cantidad de páginas: {totalPaginas}");
-        Console.WriteLine($"Cantidad de documentos: {totalDocumentos} \n");
-        Console.WriteLine(resumen);
+            Console.WriteLine("LIBROS DISTRIBUIDOS");
+            Console.WriteLine($"Cantidad de libros ya distribuidos: {cantidadLibroDistr}.");
+            Console.WriteLine($"Cantidad de páginas ya distribuidas: {extensionLibroDistr}.");
+            Console.WriteLine(resumenLibroDistr);
+            Console.WriteLine("---------------------");
 
-        Console.WriteLine("++++++++++++++++++++++++++++++++");
+            Console.WriteLine("LIBROS EN ESCANER");
+            Console.WriteLine($"Cantidad de libros en el escáner: {cantidadLibroEnEsc}.");
+            Console.WriteLine($"Cantidad de páginas en el escáner: {extensionLibroEnEsc}.");
+            Console.WriteLine(resumenLibroEnEsc);
+            Console.WriteLine("---------------------");
 
-        // PRUEBA: Generación de Informes para Libros: ESCANER
-        Informes.MostrarEnEscaner(escanerLibros, out totalPaginas, out totalDocumentos, out resumen);
-        Console.WriteLine($"Cantidad de páginas: {totalPaginas}");
-        Console.WriteLine($"Cantidad de documentos: {totalDocumentos}\n");
-        Console.WriteLine(resumen);
+            Console.WriteLine("LIBROS EN REVISIÓN");
+            Console.WriteLine($"Cantidad de libros en el escáner: {cantidadLibroEnRev}.");
+            Console.WriteLine($"Cantidad de páginas en el escáner: {extensionLibroEnRev}.");
+            Console.WriteLine(resumenLibroEnRev);
+            Console.WriteLine("---------------------");
 
-        Console.WriteLine("++++++++++++++++++++++++++++++++");
+            Console.WriteLine("LIBROS TERMINADOS");
+            Console.WriteLine($"Cantidad de mapas en el escáner: {cantidadLibroTerminado}.");
+            Console.WriteLine($"Cantidad de cm2 en el escáner: {extensionLibroTerminado}.");
+            Console.WriteLine(resumenLibroTerminado);
+            Console.WriteLine("---------------------");
 
-        // PRUEBA: Generación de Informes para Libros: REVISION
-        Informes.MostrarEnRevision(escanerLibros, out totalPaginas, out totalDocumentos, out resumen);
-        Console.WriteLine($"Cantidad de páginas: {totalPaginas}");
-        Console.WriteLine($"Cantidad de documentos: {totalDocumentos} \n");
-        Console.WriteLine(resumen);
+            Console.WriteLine("MAPAS DISTRIBUIDOS");
+            Console.WriteLine($"Cantidad de mapas ya distribuidos: {cantidadMapaDistr}.");
+            Console.WriteLine($"Cantidad de cm2 ya distribuidos: {extensionMapaDistr}.");
+            Console.WriteLine(resumenMapaDistr);
+            Console.WriteLine("---------------------");
 
-        Console.WriteLine("++++++++++++++++++++++++++++++++");
+            Console.WriteLine("MAPAS EN ESCANER");
+            Console.WriteLine($"Cantidad de mapas en el escáner: {cantidadMapaEnEsc}.");
+            Console.WriteLine($"Cantidad de cm2 en el escáner: {extensionMapaEnEsc}.");
+            Console.WriteLine(resumenMapaEnEsc);
+            Console.WriteLine("---------------------");
 
-        // PRUEBA: Generación de Informes para Libros: TERMINADOS
-        Informes.MostrarTerminados(escanerLibros, out totalPaginas, out totalDocumentos, out resumen);
-        Console.WriteLine($"Cantidad de páginas: {totalPaginas}");
-        Console.WriteLine($"Cantidad de documentos: {totalDocumentos}\n");
-        Console.WriteLine(resumen);
+            Console.WriteLine("MAPAS EN REVISIÓN");
+            Console.WriteLine($"Cantidad de mapas en el escáner: {cantidadMapaEnRev}.");
+            Console.WriteLine($"Cantidad de cm2 en el escáner: {extensionMapaEnRev}.");
+            Console.WriteLine(resumenMapaEnRev);
+            Console.WriteLine("---------------------");
 
+            Console.WriteLine("MAPAS TERMINADOS");
+            Console.WriteLine($"Cantidad de mapas en el escáner: {cantidadMapaTerminado}.");
+            Console.WriteLine($"Cantidad de cm2 en el escáner: {extensionMapaTerminado}.");
+            Console.WriteLine(resumenMapaTerminado);
+            Console.WriteLine("---------------------");
 
-        Console.WriteLine("++++++++++++++++++++++++++++++++");
-
-        //Instancia escaner MAPA
-        Escaner escanerMapas = new Escaner("HP", Escaner.TipoDoc.mapa);
-
-        // Instancia de MAPA
-        Mapa map1 = new Mapa("Nueva York", "Alice Johnson", 2015, "", "1234-5678", 55, 15);
-        Mapa map2 = new Mapa("California", "Bob Smith", 2001, "", "8765-4321", 60, 50);
-        Mapa map3 = new Mapa("Florida", "Charles Brown", 1998, "", "4321-8765", 45, 90);
-        // PRUEBA: Repetido de map3
-        Mapa map6 = new Mapa("Florida", "Charles Brown", 1998, "", "4321-8765", 45, 50);
-        Mapa map4 = new Mapa("Texas", "Diana White", 2020, "", "5678-1234", 95, 110);
-        // PRUEBA: Repetido de map4
-        Mapa map5 = new Mapa("Texas", "Diana White", 2020, "", "9999-8888", 95, 110);
-        Mapa map7 = new Mapa("Nevada", "Edward Black", 2021, "", "8888-7777", 120, 210);
-
-
-        Console.WriteLine("++++++++++++++++++++++++++++++++");
-
-        //Verificación de Carga Incorrecta:
-
-        // PRUEBA: libro en el scanner de mapas 
-        Console.WriteLine(escanerMapas + book1);
-
-        // PRUEBA: mapa en el scanner de libros
-        Console.WriteLine(escanerLibros + map1);
-
-        Console.WriteLine("++++++++++++++++++++++++++++++++");
-
-        //PRUEBA: Carga de mapas (scanner mapas)
-        Console.WriteLine(escanerMapas + map1);
-        Console.WriteLine(escanerMapas + map2);
-        Console.WriteLine(escanerMapas + map3);
-        Console.WriteLine(escanerMapas + map4);
-        Console.WriteLine(escanerMapas + map5); // No debe cargar, return false
-        Console.WriteLine(escanerMapas + map6); // No debe cargar, return false
-        Console.WriteLine(escanerMapas + map7);
-
-
-        //PRUEBA: Cambio de Estado de Documentos:
-        escanerMapas.CambiarEstadoDocumento(map2);
-
-        escanerMapas.CambiarEstadoDocumento(map3);
-        escanerMapas.CambiarEstadoDocumento(map3);
-
-        escanerMapas.CambiarEstadoDocumento(map4);
-        escanerMapas.CambiarEstadoDocumento(map4);
-        escanerMapas.CambiarEstadoDocumento(map4);
-
-        escanerMapas.CambiarEstadoDocumento(map7);
-        escanerMapas.CambiarEstadoDocumento(map7);
-        escanerMapas.CambiarEstadoDocumento(map7);
-        escanerMapas.CambiarEstadoDocumento(map7);
-        escanerMapas.CambiarEstadoDocumento(map7);
-
-
-        Console.WriteLine("++++++++++++++++++++++++++++++++");
-
-
-        // PRUEBA: Generación de Informes para mapas: DISTRIBUIDOS
-        Informes.MostrarDistribuidos(escanerMapas, out totalPaginas, out totalDocumentos, out resumen);
-        Console.WriteLine($"Total de superficie: {totalPaginas}");
-        Console.WriteLine($"Cantidad de documentos: {totalDocumentos}\n");
-        Console.WriteLine(resumen);
-
-        Console.WriteLine("++++++++++++++++++++++++++++++++");
-
-        // PRUEBA: Generación de Informes para mapas: ESCANER
-        Informes.MostrarEnEscaner(escanerMapas, out totalPaginas, out totalDocumentos, out resumen);
-        Console.WriteLine($"Total de superficie: {totalPaginas}");
-        Console.WriteLine($"Cantidad de documentos: {totalDocumentos}\n");
-        Console.WriteLine(resumen);
-
-        Console.WriteLine("++++++++++++++++++++++++++++++++");
-
-        // PRUEBA: Generación de Informes para mapas: REVISION
-        Informes.MostrarEnRevision(escanerMapas, out totalPaginas, out totalDocumentos, out resumen);
-        Console.WriteLine($"Total de superficie: {totalPaginas}");
-        Console.WriteLine($"Cantidad de documentos: {totalDocumentos} \n");
-        Console.WriteLine(resumen);
-
-        Console.WriteLine("++++++++++++++++++++++++++++++++");
-
-        // PRUEBA: Generación de Informes para mapas: TERMINADOS
-        Informes.MostrarTerminados(escanerMapas, out totalPaginas, out totalDocumentos, out resumen);
-        Console.WriteLine($"Total de superficie: {totalPaginas}");
-        Console.WriteLine($"Cantidad de documentos: {totalDocumentos}\n");
-        Console.WriteLine(resumen);
-
+            Console.ReadKey();
+        }
     }
 }
